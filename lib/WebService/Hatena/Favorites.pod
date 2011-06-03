@@ -1,0 +1,76 @@
+=head1 NAME
+
+WebService::Hatena::Favorites - A wrapper for Hatena Favorites API
+
+=head1 SYNOPSIS
+
+  use WebService::Hatena::Favorites;
+  my $ids = WebService::Hatena::Favorites->favorites($hatena_id);
+  for (@$ids) {
+    print "id:", $_, "\n";
+  }
+
+=head1 DESCRIPTION
+
+The C<WebService::Hatena::Favorites> module provides lists of favorite
+users of Hatena users in various Hatena services, using the Hatena
+Favorites API.
+
+=head1 METHODS
+
+=over 4
+
+=item $hatena_ids = WebService::Hatena::Favorites->favorites($hatena_id[, $domain)
+
+Returns the list of favorite users, as an array reference of Hatena
+IDs.  It returns C<undef> if the retrieval is failed.
+
+The optional I<$domain> argument must be one of following values:
+C<www> (entire Hatena services; default), C<a> (Hatena Antenna), C<d>
+(Hatena Diary), C<g> (Hatena Group), or C<s> (Hatena Star).
+
+=item $hatena_ids = WebService::Hatena::Favorites->friends($hatena_id[, $domain)
+
+Returns the list of Star Friends, as an array reference of Hatena
+IDs.  It returns C<undef> if the retrieval is failed.
+
+The optional I<$domain> argument, if specified, must be C<s> (Hatena
+Star).
+
+=back
+
+=head1 SEE ALSO
+
+Hatena Favorites API
+<http://developer.hatena.ne.jp/ja/documents/other/apis/favorite> (In
+Japanese).
+
+Hatena Star Favorite Users API
+<http://developer.hatena.ne.jp/en/documents/star/apis/favorites> (In
+English).
+
+L<Web::UserAgent::Functions>
+<https://github.com/wakaba/perl-web-useragent-functions>.
+
+=head1 HISTORY
+
+=over 4
+
+=item 1.0 (June 3, 2011)
+
+First version.
+
+=back
+
+=head1 AUTHOR
+
+Wakaba (id:wakabatan) <wakabatan@hatena.ne.jp>.
+
+=head1 LICENSE
+
+Copyright 2011 Hatena <http://www.hatena.ne.jp/>.
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut

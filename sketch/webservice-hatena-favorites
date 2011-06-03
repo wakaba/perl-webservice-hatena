@@ -1,0 +1,18 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use Path::Class;
+use lib file(__FILE__)->dir->parent->subdir('lib')->stringify;
+use WebService::Hatena::Favorites;
+
+my $ws = WebService::Hatena::Favorites->new;
+
+print "Favorites:\n";
+print 'www: ' . join ' ', @{$ws->favorites('jkondo', 'www')}, "\n";
+print 'a: ' . join ' ', @{$ws->favorites('jkondo', 'a')}, "\n";
+print 'd: ' . join ' ', @{$ws->favorites('jkondo', 'd')}, "\n";
+print 'g: ' . join ' ', @{$ws->favorites('jkondo', 'g')}, "\n";
+print 's: ' . join ' ', @{$ws->favorites('jkondo', 's')}, "\n";
+
+print "Friends:\n";
+print 's: ' . join ' ', @{$ws->friends('jkondo', 's')}, "\n";

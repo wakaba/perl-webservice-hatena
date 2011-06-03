@@ -1,0 +1,16 @@
+{
+    main_module_name => 'WebService::Hatena::Favorites',
+    file_names => [qw(
+        lib/WebService/Hatena/Favorites.pm
+        lib/WebService/Hatena/Favorites.pod
+        sketch/webservice-hatena-favorites.pl
+        config/distrib/webservice-hatena.pi
+    )],
+    req_modules => {
+        'JSON::Syck' => 0,
+        'Web::UserAgent::Functions' => 0,
+    },
+    t_req_modules => {
+        'Path::Class' => 0,
+    },
+};
