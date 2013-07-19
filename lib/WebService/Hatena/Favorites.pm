@@ -3,7 +3,7 @@ use strict;
 use warnings;
 our $VERSION = '1.0';
 use Web::UserAgent::Functions qw(http_get);
-use JSON::Syck;
+use JSON::Functions::XS qw(json_bytes2perl);
 
 sub new {
     my $class = shift;
@@ -21,7 +21,7 @@ sub favorites {
     if ($res->is_success) {
         local $@;
         return eval {
-            my $json = JSON::Syck::Load($res->content);
+            my $json = json_bytes2perl $res->content;
             [map { $_->{name} } @{$json->{favorites} or []}];
         } || do {
             warn $@;
@@ -43,7 +43,7 @@ sub friends {
     if ($res->is_success) {
         local $@;
         return eval {
-            my $json = JSON::Syck::Load($res->content);
+            my $json = json_bytes2perl $res->content;
             [map { $_->{name} } @{$json->{friends} or []}];
         } || do {
             warn $@;
